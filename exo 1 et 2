@@ -1,0 +1,163 @@
+import numpy as np
+## exercice 1
+
+#question 1
+
+def estPremier(n):
+    y=True
+    for i in range(2,n):
+        if n%i==0:
+            y=False
+            break
+    return(y)
+
+#question 2
+
+def petitsPremier(n):
+    l=[]
+    k=2
+    while k<=n:
+        y=True
+        for i in range(2,k):
+            if k%i==0:
+                y=False
+                break
+        if y==True :
+            l.append(k)
+        k+=1
+    return(l, len(l))
+
+#question 3
+
+def petitsPremier2(n):
+    l=[]
+    k=2
+    while k<=n:
+        y=True
+        for i in range(2,int(k**0.5)+1):
+            if k%i==0:
+                y = False
+                break
+        if y==True :
+            l.append(k)
+        k+=1
+    return(l)
+
+#question 4
+
+#def petitsPremier3(n):
+
+
+#question 5
+
+def factoriser(n):
+    l=[]
+    L=[]
+    k=2
+    while k<=n:
+        y=True
+        for i in range(2,int(k**0.5)+1):
+            if k%i==0:
+                y = False
+                break
+        if y==True :
+            l.append(k)
+        k+=1
+    for i in range(len(l)):
+        k=n
+        while k%l[i]==0:
+            L.append(l[i])
+            k=k/l[i]
+    return(L)
+
+#question 6
+
+def factoriser2(n):
+    L=[]
+    l=[2,3]
+    for i in range(2,int(n**0.5)):
+        y=True
+        for s in range(len(l)):
+            if (2*i+1)%l[s]==0:
+                y=False
+                break
+        if y==True:
+            l.append(2*i+1)
+    for i in range(len(l)):
+        k=n
+        while k%l[i]==0:
+            L.append(l[i])
+            k=k/l[i]
+    return(L,len(L))
+
+#question 7
+
+def calculerAlpha(n):
+    L=[]
+    NB=[]
+    l=[2,3]
+    for i in range(2,int(n**0.5)):
+        y=True
+        for s in range(len(l)):
+            if (2*i+1)%l[s]==0:
+                y=False
+                break
+        if y==True:
+            l.append(2*i+1)
+    for i in range(len(l)):
+        k=n
+        nb=0
+        if k%l[i]==0:
+            while k%l[i]==0:
+                L.append(l[i])
+                k=k/l[i]
+                nb+=1
+            NB.append(nb)
+    return(NB, len(NB))
+
+#question 8:
+
+
+
+##exercice 2:
+
+#question 9:
+
+def pointsToVect(A,B):
+    return(np.array([B[0]-A[0],B[1]-A[1]]))
+#question 10:
+def prodScal(u,v):
+    return(np.dot(u,v))
+#question 11:
+def norme(a):
+    return(np.linalg.norm(a))
+#question 12:
+def pente(a):
+    return(a[1]/a[0])
+#question 13:
+def longueurs(l):
+    L=[]
+    for k in range(0,len(l)-1):
+        L.append(norme(pointsToVect(l[k],l[k+1])))
+    L.append(norme(pointsToVect(l[0],l[-1])))
+    return(L)
+#question 14:
+def trianglesSembalbles(A,B):
+    l=longueurs(A)
+    L=longueurs(B)
+    for i in range(3):
+        if l[i]!=L[i]:
+            return(False)
+    return(True)
+#question 15:
+def estPermutation(L,M):
+    for i in range(len(L)):
+        if L[i]!=M[-i-1]:
+            return(False)
+    return(True)
+#question 16:
+def memesTriangles(A,B):
+    if estPermutation(A,B)==True and trianglesSembalbles(A,B)==True:
+        return(True)
+    else:
+        return(False)
