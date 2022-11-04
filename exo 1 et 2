@@ -45,7 +45,19 @@ def petitsPremier2(n):
 
 #question 4
 
-#def petitsPremier3(n):
+def petitsPremiers3(n):
+    l = []
+    for i in range(2,n+1):
+        if len(l) == 0:
+            l.append(i)
+        else:
+            t = True
+            for k in l:
+                if i % k == 0:
+                    t = False
+            if t == True:
+                l.append(i)
+    return l
 
 
 #question 5
