@@ -116,7 +116,14 @@ def calculerAlpha(n):
     return(NB, len(NB))
 
 #question 8:
-
+def estPuissance(n,b): #n>=2, b>=1
+    a = 0
+    for k in range (n+1):
+        if n==a**b:
+            print(a)
+            return True
+        a+=1
+    return False
 
 
 ##exercice 2:
