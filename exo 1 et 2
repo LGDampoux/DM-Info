@@ -1,47 +1,42 @@
 import numpy as np
 ## exercice 1
-
-#question 1
-
-def estPremier(n):
-    y=True
-    for i in range(2,n):
-        if n%i==0:
+#Question1
+def estPremier(n):            #Création d'une fonction  
+    y=True                    #initialisation d'une variable à "True"
+    for k in range(2,n):      #Avec cette boucle, on fait varier un entier k entre 2 et n-1:
+        if n%k==0 and n%1==0: #Si k divise n et que k est divisible par 1, celui-ci n'est pas premier et la variable y prend la valeur "False" et la boucle est arrêtée
             y=False
             break
-    return(y)
+    return(y)                 #Ce programme indique à l'utilisateur si le nombre qu'il a rentré est premier ou non
 
-#question 2
+#Question 2
 
-def petitsPremier(n):
+def petitsPremiers(n):          
+    L=[]                             #Création d'une liste vide
+    for k in range(2,n+1):           #Avec cette boucle, on fait varier un entier k entre 2 et n:
+        if estPremier(k)==True:      #On teste pour chaque valeur de k si il est premier ou non: si il est premier, on l'ajoute à la liste L
+            L.append(k)
+    return(L,len(L))                 #Ce programme renvoie donc la liste des nombres premiers compris entre 2 et le nombre entré par l'utilisateur
+
+#Question 3
+
+#Cette fonction renvoie pour un entier n rentré par l'utilisateur, la liste des nombres premiers compris entre 3 et n dans l'ordre croissant et leur nombre
+#Paramètre d'entrée: n - l'entier rentré par l'utilisateur
+#Paramètre de sortie: l - liste des nombres premiers compris entre 3 et n 
+#                     et len(l): longueur de la liste l c'est à dire le nombre d'éléments de la liste
+
+
+def petitsPremiers2(n):                     
     l=[]
-    k=2
-    while k<=n:
+    for k in range(3,n):        #On teste pour chaque entier compris entre 2 et n si il est premier         
         y=True
-        for i in range(2,k):
-            if k%i==0:
-                y=False
-                break
-        if y==True :
-            l.append(k)
-        k+=1
-    return(l, len(l))
-
-#question 3
-
-def petitsPremier2(n):
-    l=[]
-    k=2
-    while k<=n:
-        y=True
-        for i in range(2,int(k**0.5)+1):
+        for i in range(3,int(k**0.5)+1):    #On teste si il est premier en appliquant la fonction estPremier mais plus efficace
             if k%i==0:
                 y = False
                 break
         if y==True :
             l.append(k)
-        k+=1
-    return(l)
+    return(l,len(l))
 
 #question 4
 
